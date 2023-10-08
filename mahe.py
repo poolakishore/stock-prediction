@@ -1,4 +1,4 @@
-# Import necessary libraries
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,17 +6,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import yfinance as yf
 
-# Download stock price data (e.g., Apple Inc.)
+ 
 ticker_symbol = 'AAPL'
 start_date = '2020-01-01'
 end_date = '2021-01-01'
 data = yf.download(ticker_symbol, start=start_date, end=end_date)
 
-# Calculate daily returns
+ 
 data['Daily_Return'] = data['Adj Close'].pct_change()
 data = data.dropna()
 
-# Prepare data for modeling
+ 
 X = np.array(data['Daily_Return']).reshape(-1, 1)
 y = np.array(data['Adj Close'])
 
